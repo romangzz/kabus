@@ -7,12 +7,11 @@ import kotlinx.coroutines.Deferred
 
 class InMemoryCommandBus : CommandBus {
 
-    override fun <E : Event, C : Command<E>> asyncExecute(command: C): Deferred<E> {
-        TODO("Not yet implemented")
-    }
+  override fun <E : Event, C : Command<E>> asyncExecute(command: C): Deferred<E> {
+    TODO("Not yet implemented")
+  }
 
-    override fun <E : Event, C : Command<E>> syncExecute(command: C): E {
-        TODO("Not yet implemented")
-    }
-
+  override fun <E : Event, C : Command<E>> syncExecute(command: C): E {
+    TODO("Not yet implemented")
+  }
 }

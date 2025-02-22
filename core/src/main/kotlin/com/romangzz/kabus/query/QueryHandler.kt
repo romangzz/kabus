@@ -8,10 +8,10 @@ package com.romangzz.kabus.query
  */
 fun interface QueryHandler<Q : Query<R>, R : QueryModel> {
 
-    /**
-     * Handles the query.
-     *
-     * @param query The query to handle.
-     */
-    suspend fun handle(query: Q): R
+  /**
+   * Handles the query.
+   *
+   * @param query The query to handle.
+   */
+  suspend fun handle(query: Q): R
 }

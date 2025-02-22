@@ -7,12 +7,11 @@ import kotlinx.coroutines.Deferred
 
 class InMemoryQueryBus : QueryBus {
 
-    override fun <R : QueryModel, C : Query<R>> asyncExecute(query: C): Deferred<R> {
-        TODO("Not yet implemented")
-    }
+  override fun <R : QueryModel, C : Query<R>> asyncExecute(query: C): Deferred<R> {
+    TODO("Not yet implemented")
+  }
 
-    override fun <R : QueryModel, C : Query<R>> syncExecute(query: C): R {
-        TODO("Not yet implemented")
-    }
-
+  override fun <R : QueryModel, C : Query<R>> syncExecute(query: C): R {
+    TODO("Not yet implemented")
+  }
 }

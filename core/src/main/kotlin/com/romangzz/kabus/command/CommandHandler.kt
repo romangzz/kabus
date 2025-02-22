@@ -9,5 +9,5 @@ import com.romangzz.kabus.event.Event
  * @param E the event type.
  */
 fun interface CommandHandler<C : Command<E>, E : Event> {
-    suspend fun handle(command: C): E
+  suspend fun handle(command: C): E
 }
