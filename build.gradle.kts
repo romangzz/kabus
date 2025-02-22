@@ -11,6 +11,7 @@ plugins {
 
 val junitVersion by extra("5.10.0")
 val coroutinesVersion by extra("1.10.1")
+val classgraphVersion by extra("4.8.179")
 
 allprojects {
   apply(plugin = "com.diffplug.spotless")

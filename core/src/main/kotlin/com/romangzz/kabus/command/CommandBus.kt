@@ -12,7 +12,7 @@ interface CommandBus {
    * @param command The command to execute.
    * @return A future representing the published event.
    */
-  fun <E : Event, C : Command<E>> asyncExecute(command: C): Deferred<E>
+  suspend fun <E : Event, C : Command<E>> asyncExecute(command: C): Deferred<E>
 
   /**
    * Executes the command synchronously.
