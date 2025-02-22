@@ -5,11 +5,13 @@ import com.romangzz.kabus.bus.memory.command.InMemoryCommandBus
 import com.romangzz.kabus.bus.memory.command.InMemoryCommandRegistry
 import com.romangzz.kabus.bus.memory.event.InMemoryEventBus
 import com.romangzz.kabus.bus.memory.query.InMemoryQueryBus
+import com.romangzz.kabus.bus.memory.query.InMemoryQueryRegistry
 import com.romangzz.kabus.command.CommandBus
 import com.romangzz.kabus.command.CommandHandler
 import com.romangzz.kabus.configuration.KabusConfiguration
 import com.romangzz.kabus.event.EventBus
 import com.romangzz.kabus.query.QueryBus
+import com.romangzz.kabus.query.QueryHandler
 
 /**
  * Abstract factory class for creating in-memory implementations of Kabus components.
@@ -21,7 +23,8 @@ abstract class InMemoryKabusFactory(configuration: KabusConfiguration) :
 
   private val commandRegistry: InMemoryCommandRegistry = InMemoryCommandRegistry()
   private val commandBus: InMemoryCommandBus = InMemoryCommandBus(commandRegistry)
-  private val queryBus: InMemoryQueryBus = InMemoryQueryBus()
+  private val queryRegistry: InMemoryQueryRegistry = InMemoryQueryRegistry()
+  private val queryBus: InMemoryQueryBus = InMemoryQueryBus(queryRegistry)
   private val eventBus: InMemoryEventBus = InMemoryEventBus()
 
   /** Initializes the factory by setting up the command registry with command handlers. */
@@ -29,6 +32,10 @@ abstract class InMemoryKabusFactory(configuration: KabusConfiguration) :
     val handlerInstances = getCommandHandlerInstances()
     commandRegistry.initialize(configuration.basePackage) { _, handler ->
       handlerInstances.first { it::class.java == handler }
+    }
+    val queryHandlerInstances = getQueryHandlerInstances()
+    queryRegistry.initialize(configuration.basePackage) { _, handler ->
+      queryHandlerInstances.first { it::class.java == handler }
     }
   }
 
@@ -65,4 +72,11 @@ abstract class InMemoryKabusFactory(configuration: KabusConfiguration) :
    * @return A list of command handler instances.
    */
   abstract fun getCommandHandlerInstances(): List<CommandHandler<*, *>>
+
+  /**
+   * Abstract method to get instances of query handlers.
+   *
+   * @return A list of query handler instances.
+   */
+  abstract fun getQueryHandlerInstances(): List<QueryHandler<*, *>>
 }

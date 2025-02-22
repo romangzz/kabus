@@ -11,7 +11,7 @@ interface QueryBus {
    * @param query The query to execute.
    * @return A future representing the query result.
    */
-  fun <R : QueryModel, C : Query<R>> asyncExecute(query: C): Deferred<R>
+  suspend fun <R : QueryModel, C : Query<R>> asyncExecute(query: C): Deferred<R>
 
   /**
    * Executes the query synchronously.
