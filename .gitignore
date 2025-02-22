@@ -1,5 +1,5 @@
 # Ignore Gradle build directory
-/build/
+**/build/
 
 # Ignore IntelliJ IDEA project files
 /.idea/
@@ -12,12 +12,12 @@
 
 # Ignore Kotlin/Gradle cache files
 .gradle/
-/out/
+**/out/
 /.gradle/
 
 # Ignore logs
 *.log
-/logs/
+**/logs/
 
 # Ignore compiled classes
 /bin/
@@ -32,9 +32,9 @@
 Thumbs.db
 
 # Ignore coverage reports
-/coverage/
-/reports/
-/test-results/
+**/coverage/
+**/reports/
+**/test-results/
 
 # Ignore environment files
 .env
